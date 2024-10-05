@@ -3,8 +3,10 @@ import { Textarea } from "@/components/ui/textarea"
 
 interface ReportTabsProps {
   report: {
-    english: string
-    vietnamese: string
+    en_content: string
+    vi_content: string
+    published_url_en: string
+    published_url_vi: string
   }
 }
 
@@ -18,7 +20,7 @@ export default function ReportTabs({ report }: ReportTabsProps) {
         </TabsList>
         <TabsContent value="english">
           <Textarea
-            value={report.english}
+            value={report.en_content}
             readOnly
             className="w-full h-[300px] overflow-y-auto"
             placeholder="Your report will appear here..."
@@ -26,7 +28,7 @@ export default function ReportTabs({ report }: ReportTabsProps) {
         </TabsContent>
         <TabsContent value="vietnamese">
           <Textarea
-            value={report.vietnamese}
+            value={report.vi_content}
             readOnly
             className="w-full h-[300px] overflow-y-auto"
             placeholder="Báo cáo của bạn sẽ xuất hiện ở đây..."
@@ -35,8 +37,8 @@ export default function ReportTabs({ report }: ReportTabsProps) {
       </Tabs>
       <div className="mt-4 text-sm text-gray-600">
         <p>View on GitHub Gist:</p>
-        <a href="#" className="text-blue-600 hover:underline mr-4">English Version</a>
-        <a href="#" className="text-blue-600 hover:underline">Vietnamese Version</a>
+        <a href={report.published_url_en} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline mr-4">English Version</a>
+        <a href={report.published_url_vi} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">Vietnamese Version</a>
       </div>
     </div>
   )
