@@ -1,0 +1,1 @@
+export const WEBSOCKET_API_URL = process.env.NEXT_PUBLIC_WEBSOCKET_API_URL || 'ws://localhost:8000/genreport'

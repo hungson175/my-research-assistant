@@ -6,6 +6,7 @@ import CreditInfo from './CreditInfo'
 import Header from '../layout/Header'
 import { FileText, Zap } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import { WEBSOCKET_API_URL } from '@/config/env'
 
 interface LogMessage {
   type: string;
@@ -39,7 +40,7 @@ export default function ResearchManager() {
   const [remainingCredits, setRemainingCredits] = useState(10) // Example initial value
 
   const connectWebSocket = useCallback(() => {
-    const ws = new WebSocket('ws://localhost:8000/genreport')
+    const ws = new WebSocket(WEBSOCKET_API_URL)
     setWebsocket(ws)
 
     ws.onopen = () => {
