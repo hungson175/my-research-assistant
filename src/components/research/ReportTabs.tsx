@@ -1,5 +1,5 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { Textarea } from "@/components/ui/textarea"
+import ReactMarkdown from 'react-markdown'
 
 interface ReportTabsProps {
   report: {
@@ -19,20 +19,14 @@ export default function ReportTabs({ report }: ReportTabsProps) {
           <TabsTrigger value="vietnamese">Vietnamese</TabsTrigger>
         </TabsList>
         <TabsContent value="english">
-          <Textarea
-            value={report.en_content}
-            readOnly
-            className="w-full h-[300px] overflow-y-auto"
-            placeholder="Your report will appear here..."
-          />
+          <div className="w-full h-[300px] overflow-y-auto prose prose-sm max-w-none">
+            <ReactMarkdown>{report.en_content}</ReactMarkdown>
+          </div>
         </TabsContent>
         <TabsContent value="vietnamese">
-          <Textarea
-            value={report.vi_content}
-            readOnly
-            className="w-full h-[300px] overflow-y-auto"
-            placeholder="Báo cáo của bạn sẽ xuất hiện ở đây..."
-          />
+          <div className="w-full h-[300px] overflow-y-auto prose prose-sm max-w-none">
+            <ReactMarkdown>{report.vi_content}</ReactMarkdown>
+          </div>
         </TabsContent>
       </Tabs>
       <div className="mt-4 text-sm text-gray-600">
