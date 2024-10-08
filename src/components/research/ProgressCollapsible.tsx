@@ -1,18 +1,32 @@
+import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible"
-import { ChevronDown } from "lucide-react"
+import { ChevronDown, ChevronUp } from "lucide-react"
 
 interface ProgressCollapsibleProps {
   progress: string[]
+  isGenerating: boolean
 }
 
-export default function ProgressCollapsible({ progress }: ProgressCollapsibleProps) {
+export default function ProgressCollapsible({ progress, isGenerating }: ProgressCollapsibleProps) {
+  const [isOpen, setIsOpen] = useState(false)
+
+  useEffect(() => {
+    if (isGenerating) {
+      setIsOpen(true)
+    }
+  }, [isGenerating])
+
   return (
-    <Collapsible>
+    <Collapsible open={isOpen} onOpenChange={setIsOpen}>
       <CollapsibleTrigger asChild>
         <Button variant="outline" className="w-full bg-white">
-          Show Progress
-          <ChevronDown className="ml-2 h-4 w-4" />
+          {isOpen ? "Hide Progress" : "Show Progress"}
+          {isOpen ? (
+            <ChevronUp className="ml-2 h-4 w-4" />
+          ) : (
+            <ChevronDown className="ml-2 h-4 w-4" />
+          )}
         </Button>
       </CollapsibleTrigger>
       <CollapsibleContent>

@@ -137,7 +137,7 @@ export default function ResearchManager() {
             </Button>
           </div>
 
-          <ProgressCollapsible progress={progress} />
+          <ProgressCollapsible progress={progress} isGenerating={isGenerating} />
 
           {(report.en_content || report.vi_content) && (
             <ReportTabs report={report} />
